@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class myStoryCircle extends StatelessWidget {
-  const myStoryCircle({super.key});
-
+  const myStoryCircle(
+      {super.key, required this.nickname, required this.iconName});
+  final String nickname;
+  final String iconName;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,14 +16,17 @@ class myStoryCircle extends StatelessWidget {
           Container(
             width: 62,
             height: 40,
-            decoration:
-                const BoxDecoration(color: Colors.grey, shape: BoxShape.circle),
-            child: const Icon(
-              Icons.person,
-              size: 36,
+            clipBehavior: Clip.antiAlias,
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            child: Image.asset(
+              "assets/$iconName.jpg",
+              fit: BoxFit.cover,
             ),
           ),
-          const Text("name")
+          Text(
+            nickname,
+            style: const TextStyle(fontSize: 12),
+          ),
         ],
       ),
     );
